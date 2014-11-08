@@ -10,4 +10,6 @@
 
 @interface JHDataUtils : NSObject
 
++ (void)sayHello;
+
 @end

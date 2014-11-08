@@ -10,4 +10,9 @@
 
 @implementation JHDataUtils
 
++ (void)sayHello
+{
+    NSLog(@"%@", [JHDataUtils class]);
+}
+
 @end
