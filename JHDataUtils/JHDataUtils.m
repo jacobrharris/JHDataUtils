@@ -12,6 +12,7 @@
 
 + (void)sayHello
 {
+    // Test
     NSLog(@"%@", [JHDataUtils class]);
 }
 
