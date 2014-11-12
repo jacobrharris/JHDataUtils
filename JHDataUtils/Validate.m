@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Jacob Harris. All rights reserved.
 //
 
-#import "JHDataUtils.h"
+#import "Validate.h"
 
-@implementation JHDataUtils
+@implementation Validate
 
 + (void)sayHello
 {
     // Test
-    NSLog(@"%@", [JHDataUtils class]);
+    NSLog(@"%@", [Validate class]);
 }
 
 @end

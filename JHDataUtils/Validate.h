@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JHDataUtils : NSObject
+@interface Validate : NSObject
 
 + (void)sayHello;
 

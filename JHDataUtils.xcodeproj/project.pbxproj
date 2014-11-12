@@ -22,9 +22,34 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		16E837EA1A0C4EE100D92218 /* JHDataUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E837E91A0C4EE100D92218 /* JHDataUtils.h */; };
-		16E837EC1A0C4EE100D92218 /* JHDataUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E837EB1A0C4EE100D92218 /* JHDataUtils.m */; };
-		16E838011A0C4F6900D92218 /* JHDataUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 16E837E91A0C4EE100D92218 /* JHDataUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		164099201A12DBBE00D7AD8F /* PendingOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 1640991E1A12DBBE00D7AD8F /* PendingOperations.h */; };
+		164099211A12DBBE00D7AD8F /* PendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640991F1A12DBBE00D7AD8F /* PendingOperations.m */; };
+		164099241A12DC7C00D7AD8F /* AIDataUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 164099221A12DC7C00D7AD8F /* AIDataUtils.h */; };
+		164099251A12DC7C00D7AD8F /* AIDataUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 164099231A12DC7C00D7AD8F /* AIDataUtils.m */; };
+		1640993A1A12E44500D7AD8F /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 164099271A12E44500D7AD8F /* AFHTTPRequestOperation.h */; };
+		1640993B1A12E44500D7AD8F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 164099281A12E44500D7AD8F /* AFHTTPRequestOperation.m */; };
+		1640993C1A12E44500D7AD8F /* AFHTTPRequestOperationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 164099291A12E44500D7AD8F /* AFHTTPRequestOperationManager.h */; };
+		1640993D1A12E44500D7AD8F /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640992A1A12E44500D7AD8F /* AFHTTPRequestOperationManager.m */; };
+		1640993E1A12E44500D7AD8F /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1640992B1A12E44500D7AD8F /* AFHTTPSessionManager.h */; };
+		1640993F1A12E44500D7AD8F /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640992C1A12E44500D7AD8F /* AFHTTPSessionManager.m */; };
+		164099401A12E44500D7AD8F /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 1640992D1A12E44500D7AD8F /* AFNetworking.h */; };
+		164099411A12E44500D7AD8F /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1640992E1A12E44500D7AD8F /* AFNetworkReachabilityManager.h */; };
+		164099421A12E44500D7AD8F /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640992F1A12E44500D7AD8F /* AFNetworkReachabilityManager.m */; };
+		164099431A12E44500D7AD8F /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 164099301A12E44500D7AD8F /* AFSecurityPolicy.h */; };
+		164099441A12E44500D7AD8F /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 164099311A12E44500D7AD8F /* AFSecurityPolicy.m */; };
+		164099451A12E44500D7AD8F /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 164099321A12E44500D7AD8F /* AFURLConnectionOperation.h */; };
+		164099461A12E44500D7AD8F /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 164099331A12E44500D7AD8F /* AFURLConnectionOperation.m */; };
+		164099471A12E44500D7AD8F /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 164099341A12E44500D7AD8F /* AFURLRequestSerialization.h */; };
+		164099481A12E44500D7AD8F /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 164099351A12E44500D7AD8F /* AFURLRequestSerialization.m */; };
+		164099491A12E44500D7AD8F /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 164099361A12E44500D7AD8F /* AFURLResponseSerialization.h */; };
+		1640994A1A12E44500D7AD8F /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 164099371A12E44500D7AD8F /* AFURLResponseSerialization.m */; };
+		1640994B1A12E44500D7AD8F /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 164099381A12E44500D7AD8F /* AFURLSessionManager.h */; };
+		1640994C1A12E44500D7AD8F /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 164099391A12E44500D7AD8F /* AFURLSessionManager.m */; };
+		1640994F1A12E70A00D7AD8F /* JHDataObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 1640994D1A12E70A00D7AD8F /* JHDataObject.h */; };
+		164099501A12E70A00D7AD8F /* JHDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640994E1A12E70A00D7AD8F /* JHDataObject.m */; };
+		16E837EA1A0C4EE100D92218 /* Validate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 16E837E91A0C4EE100D92218 /* Validate.h */; };
+		16E837EC1A0C4EE100D92218 /* Validate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E837EB1A0C4EE100D92218 /* Validate.m */; };
+		16E838011A0C4F6900D92218 /* Validate.h in Headers */ = {isa = PBXBuildFile; fileRef = 16E837E91A0C4EE100D92218 /* Validate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,22 +63,48 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		16E837E41A0C4EE100D92218 /* CopyFiles */ = {
+		16E837E41A0C4EE100D92218 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				16E837EA1A0C4EE100D92218 /* JHDataUtils.h in CopyFiles */,
+				16E837EA1A0C4EE100D92218 /* Validate.h in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1640991E1A12DBBE00D7AD8F /* PendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PendingOperations.h; path = ../PendingOperations.h; sourceTree = "<group>"; };
+		1640991F1A12DBBE00D7AD8F /* PendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PendingOperations.m; path = ../PendingOperations.m; sourceTree = "<group>"; };
+		164099221A12DC7C00D7AD8F /* AIDataUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIDataUtils.h; sourceTree = "<group>"; };
+		164099231A12DC7C00D7AD8F /* AIDataUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIDataUtils.m; sourceTree = "<group>"; };
+		164099271A12E44500D7AD8F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		164099281A12E44500D7AD8F /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		164099291A12E44500D7AD8F /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		1640992A1A12E44500D7AD8F /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		1640992B1A12E44500D7AD8F /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		1640992C1A12E44500D7AD8F /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		1640992D1A12E44500D7AD8F /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		1640992E1A12E44500D7AD8F /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		1640992F1A12E44500D7AD8F /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		164099301A12E44500D7AD8F /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		164099311A12E44500D7AD8F /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		164099321A12E44500D7AD8F /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		164099331A12E44500D7AD8F /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		164099341A12E44500D7AD8F /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		164099351A12E44500D7AD8F /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		164099361A12E44500D7AD8F /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		164099371A12E44500D7AD8F /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		164099381A12E44500D7AD8F /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		164099391A12E44500D7AD8F /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		1640994D1A12E70A00D7AD8F /* JHDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDataObject.h; sourceTree = "<group>"; };
+		1640994E1A12E70A00D7AD8F /* JHDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHDataObject.m; sourceTree = "<group>"; };
 		16E837E61A0C4EE100D92218 /* libJHDataUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJHDataUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		16E837E91A0C4EE100D92218 /* JHDataUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHDataUtils.h; sourceTree = "<group>"; };
-		16E837EB1A0C4EE100D92218 /* JHDataUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHDataUtils.m; sourceTree = "<group>"; };
+		16E837E91A0C4EE100D92218 /* Validate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Validate.h; sourceTree = "<group>"; };
+		16E837EB1A0C4EE100D92218 /* Validate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Validate.m; sourceTree = "<group>"; };
 		16E837F71A0C4EE100D92218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,11 +119,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		164099261A12E44500D7AD8F /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				164099271A12E44500D7AD8F /* AFHTTPRequestOperation.h */,
+				164099281A12E44500D7AD8F /* AFHTTPRequestOperation.m */,
+				164099291A12E44500D7AD8F /* AFHTTPRequestOperationManager.h */,
+				1640992A1A12E44500D7AD8F /* AFHTTPRequestOperationManager.m */,
+				1640992B1A12E44500D7AD8F /* AFHTTPSessionManager.h */,
+				1640992C1A12E44500D7AD8F /* AFHTTPSessionManager.m */,
+				1640992D1A12E44500D7AD8F /* AFNetworking.h */,
+				1640992E1A12E44500D7AD8F /* AFNetworkReachabilityManager.h */,
+				1640992F1A12E44500D7AD8F /* AFNetworkReachabilityManager.m */,
+				164099301A12E44500D7AD8F /* AFSecurityPolicy.h */,
+				164099311A12E44500D7AD8F /* AFSecurityPolicy.m */,
+				164099321A12E44500D7AD8F /* AFURLConnectionOperation.h */,
+				164099331A12E44500D7AD8F /* AFURLConnectionOperation.m */,
+				164099341A12E44500D7AD8F /* AFURLRequestSerialization.h */,
+				164099351A12E44500D7AD8F /* AFURLRequestSerialization.m */,
+				164099361A12E44500D7AD8F /* AFURLResponseSerialization.h */,
+				164099371A12E44500D7AD8F /* AFURLResponseSerialization.m */,
+				164099381A12E44500D7AD8F /* AFURLSessionManager.h */,
+				164099391A12E44500D7AD8F /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
 		16E837DD1A0C4EE100D92218 = {
 			isa = PBXGroup;
 			children = (
 				16E837E81A0C4EE100D92218 /* JHDataUtils */,
 				16E837F51A0C4EE100D92218 /* JHDataUtilsTests */,
+				164099261A12E44500D7AD8F /* AFNetworking */,
 				16E837E71A0C4EE100D92218 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +166,14 @@
 		16E837E81A0C4EE100D92218 /* JHDataUtils */ = {
 			isa = PBXGroup;
 			children = (
-				16E837E91A0C4EE100D92218 /* JHDataUtils.h */,
-				16E837EB1A0C4EE100D92218 /* JHDataUtils.m */,
+				16E837E91A0C4EE100D92218 /* Validate.h */,
+				16E837EB1A0C4EE100D92218 /* Validate.m */,
+				1640991E1A12DBBE00D7AD8F /* PendingOperations.h */,
+				1640991F1A12DBBE00D7AD8F /* PendingOperations.m */,
+				164099221A12DC7C00D7AD8F /* AIDataUtils.h */,
+				164099231A12DC7C00D7AD8F /* AIDataUtils.m */,
+				1640994D1A12E70A00D7AD8F /* JHDataObject.h */,
+				1640994E1A12E70A00D7AD8F /* JHDataObject.m */,
 			);
 			path = JHDataUtils;
 			sourceTree = "<group>";
@@ -117,7 +201,20 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16E838011A0C4F6900D92218 /* JHDataUtils.h in Headers */,
+				164099471A12E44500D7AD8F /* AFURLRequestSerialization.h in Headers */,
+				1640994F1A12E70A00D7AD8F /* JHDataObject.h in Headers */,
+				164099431A12E44500D7AD8F /* AFSecurityPolicy.h in Headers */,
+				164099401A12E44500D7AD8F /* AFNetworking.h in Headers */,
+				164099411A12E44500D7AD8F /* AFNetworkReachabilityManager.h in Headers */,
+				164099201A12DBBE00D7AD8F /* PendingOperations.h in Headers */,
+				16E838011A0C4F6900D92218 /* Validate.h in Headers */,
+				1640993E1A12E44500D7AD8F /* AFHTTPSessionManager.h in Headers */,
+				1640994B1A12E44500D7AD8F /* AFURLSessionManager.h in Headers */,
+				1640993C1A12E44500D7AD8F /* AFHTTPRequestOperationManager.h in Headers */,
+				164099241A12DC7C00D7AD8F /* AIDataUtils.h in Headers */,
+				164099491A12E44500D7AD8F /* AFURLResponseSerialization.h in Headers */,
+				1640993A1A12E44500D7AD8F /* AFHTTPRequestOperation.h in Headers */,
+				164099451A12E44500D7AD8F /* AFURLConnectionOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +227,7 @@
 			buildPhases = (
 				16E837E21A0C4EE100D92218 /* Sources */,
 				16E837E31A0C4EE100D92218 /* Frameworks */,
-				16E837E41A0C4EE100D92218 /* CopyFiles */,
+				16E837E41A0C4EE100D92218 /* Copy Files */,
 				16E838001A0C4F5500D92218 /* Headers */,
 				16A337D21A0D98AE00C9F239 /* Build Framework */,
 			);
@@ -205,7 +302,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\n# If we're already inside this script then die\nif [ -n \"$RW_MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\nexit 0\nfi\nexport RW_MULTIPLATFORM_BUILD_IN_PROGRESS=1\n\nRW_FRAMEWORK_NAME=${PROJECT_NAME}\nRW_INPUT_STATIC_LIB=\"lib${PROJECT_NAME}.a\"\nRW_FRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework\"\n\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n    -target \"${TARGET_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    OBJROOT=\"${OBJROOT}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    SYMROOT=\"${SYMROOT}\" $ACTION\n}\n\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\nRW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\nRW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 3 - Determine the other platform\nif [ \"$RW_SDK_PLATFORM\" == \"iphoneos\" ]; then\nRW_OTHER_PLATFORM=iphonesimulator\nelse\nRW_OTHER_PLATFORM=iphoneos\nfi\n\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$RW_SDK_PLATFORM$ ]]; then\nRW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${RW_OTHER_PLATFORM}\"\nelse\necho \"Could not find other platform build directory.\"\nexit 1\nfi\n\n# Build the other platform.\nbuild_static_library \"${RW_OTHER_PLATFORM}${RW_SDK_VERSION}\"\n\n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$RW_SDK_PLATFORM\" == \"iphonesimulator\" ]; then\nbuild_static_library \"${SDK_NAME}\"\nfi\n\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Copy the framework to the user's desktop\nditto \"${RW_FRAMEWORK_LOCATION}\" \"${HOME}/Desktop/${RW_FRAMEWORK_NAME}.framework\"";
+			shellScript = "set -e\n\n# If we're already inside this script then die\nif [ -n \"$RW_MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\nexit 0\nfi\nexport RW_MULTIPLATFORM_BUILD_IN_PROGRESS=1\n\nRW_FRAMEWORK_NAME=${PROJECT_NAME}\nRW_INPUT_STATIC_LIB=\"lib${PROJECT_NAME}.a\"\nRW_FRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework\"\n\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n    -target \"${TARGET_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    OBJROOT=\"${OBJROOT}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    SYMROOT=\"${SYMROOT}\" $ACTION\n}\n\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\nRW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\nRW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 3 - Determine the other platform\nif [ \"$RW_SDK_PLATFORM\" == \"iphoneos\" ]; then\nRW_OTHER_PLATFORM=iphonesimulator\nelse\nRW_OTHER_PLATFORM=iphoneos\nfi\n\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$RW_SDK_PLATFORM$ ]]; then\nRW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${RW_OTHER_PLATFORM}\"\nelse\necho \"Could not find other platform build directory.\"\nexit 1\nfi\n\n# Build the other platform.\nbuild_static_library \"${RW_OTHER_PLATFORM}${RW_SDK_VERSION}\"\n\n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$RW_SDK_PLATFORM\" == \"iphonesimulator\" ]; then\nbuild_static_library \"${SDK_NAME}\"\nfi\n\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Copy the framework to the user's home directory\nditto \"${RW_FRAMEWORK_LOCATION}\" \"${HOME}/${RW_FRAMEWORK_NAME}.framework\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -214,7 +311,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16E837EC1A0C4EE100D92218 /* JHDataUtils.m in Sources */,
+				1640993B1A12E44500D7AD8F /* AFHTTPRequestOperation.m in Sources */,
+				16E837EC1A0C4EE100D92218 /* Validate.m in Sources */,
+				1640993D1A12E44500D7AD8F /* AFHTTPRequestOperationManager.m in Sources */,
+				164099421A12E44500D7AD8F /* AFNetworkReachabilityManager.m in Sources */,
+				164099501A12E70A00D7AD8F /* JHDataObject.m in Sources */,
+				1640994A1A12E44500D7AD8F /* AFURLResponseSerialization.m in Sources */,
+				164099461A12E44500D7AD8F /* AFURLConnectionOperation.m in Sources */,
+				164099441A12E44500D7AD8F /* AFSecurityPolicy.m in Sources */,
+				1640993F1A12E44500D7AD8F /* AFHTTPSessionManager.m in Sources */,
+				164099481A12E44500D7AD8F /* AFURLRequestSerialization.m in Sources */,
+				1640994C1A12E44500D7AD8F /* AFURLSessionManager.m in Sources */,
+				164099211A12DBBE00D7AD8F /* PendingOperations.m in Sources */,
+				164099251A12DC7C00D7AD8F /* AIDataUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +462,7 @@
 				16A337D61A0D9ABE00C9F239 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		16E837E11A0C4EE100D92218 /* Build configuration list for PBXProject "JHDataUtils" */ = {
 			isa = XCConfigurationList;
