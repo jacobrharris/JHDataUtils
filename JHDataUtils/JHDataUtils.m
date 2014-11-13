@@ -6,10 +6,14 @@
 //  Copyright (c) 2014 Jacob Harris. All rights reserved.
 //
 
-#import "AIDataUtils.h"
-#import "JHDataObject.h"
+#import "JHDataUtils.h"
+#import "PendingOperations.h"
+#import "AFNetworking.h"
 
-@implementation AIDataUtils
+@implementation JHDataUtils
+{
+    PendingOperations *_pendingOperations;
+}
 
 #define apiKey @"abcd1234"
 
@@ -20,7 +24,7 @@
     
     [datasource_download_operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
     {
-        id<AIDataUtilsDelegate> delegate = self.delegate;
+        id<JHDataUtilsDelegate> delegate = self.delegate;
         JHDataObject *dataObject = [[JHDataObject alloc] initWithData:responseObject fromRequest:request]; // SHOULD THIS BE USING THE NSURLRequest OR THE AFHTTPRequestOperation?
         [delegate dataUtils:self didFinishWithDataObject:dataObject];
          
