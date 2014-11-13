@@ -17,6 +17,8 @@
 - (id)initWithData:(id)data fromRequest:(NSURLRequest *)request
 {
     if (self = [super init]) {
+        _requestObject = request;
+        _responseObject = data;
         _jsonDict = [self jsonifyData:data];
     }
     
