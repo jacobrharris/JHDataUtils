@@ -10,7 +10,11 @@
 
 @interface JHDataObject : NSObject
 
-- (id)initWithData:(id)data fromRequest:(NSURLRequest *)request;
+- (id)initWithOperation:(id)operation;
+
 - (NSDictionary *)allData;
+- (NSURLRequest *)request;
+- (NSHTTPURLResponse *)response;
+- (NSDictionary *)json;
 
 @end

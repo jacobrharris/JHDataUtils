@@ -25,9 +25,14 @@
     [datasource_download_operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
     {
         id<JHDataUtilsDelegate> delegate = self.delegate;
-        JHDataObject *dataObject = [[JHDataObject alloc] initWithData:responseObject fromRequest:request]; // SHOULD THIS BE USING THE NSURLRequest OR THE AFHTTPRequestOperation?
-        [delegate dataUtils:self didFinishWithDataObject:dataObject];
-         
+        JHDataObject *dataObject = [[JHDataObject alloc] initWithOperation:operation];
+        
+        if (![dataObject json]) {
+            [delegate dataUtils:self didFinishWithDataObject:nil];
+        } else {
+            [delegate dataUtils:self didFinishWithDataObject:dataObject];
+        }
+        
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
          
     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
