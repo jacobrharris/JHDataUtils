@@ -10,11 +10,12 @@
 
 @interface JHDataObject : NSObject
 
-- (id)initWithOperation:(id)operation;
+- (id)initWithOperation:(id)operation error:(NSError *)error;
 
 - (NSDictionary *)allData;
 - (NSURLRequest *)request;
 - (NSHTTPURLResponse *)response;
+- (NSError *)error;
 - (NSDictionary *)json;
 
 @end

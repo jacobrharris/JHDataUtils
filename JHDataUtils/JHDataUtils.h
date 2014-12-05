@@ -16,6 +16,9 @@
 @property (weak, nonatomic) id <JHDataUtilsDelegate> delegate;
 
 - (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate;
+- (NSArray *)allPendingOperations;
+- (id)pendingOperationAtIndexPath:(NSIndexPath *)indexPath;
+- (void)removePendingOperationAtIndexPath:(NSIndexPath *)indexPath;
 - (void)suspendAllOperations;
 - (void)resumeAllOperations;
 - (void)cancelAllOperations;

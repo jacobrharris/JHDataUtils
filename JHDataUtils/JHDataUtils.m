@@ -10,8 +10,7 @@
 #import "PendingOperations.h"
 #import "AFNetworking.h"
 
-@implementation JHDataUtils
-{
+@implementation JHDataUtils {
     PendingOperations *_pendingOperations;
 }
 
@@ -25,7 +24,7 @@
     [datasource_download_operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
     {
         id<JHDataUtilsDelegate> delegate = self.delegate;
-        JHDataObject *dataObject = [[JHDataObject alloc] initWithOperation:operation];
+        JHDataObject *dataObject = [[JHDataObject alloc] initWithOperation:operation error:nil];
         
         if (![dataObject json]) {
             [delegate dataUtils:self didFinishWithDataObject:nil];
@@ -37,7 +36,8 @@
          
     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
     {
-        //         HANDLE NETWORK FAIL?
+        JHDataObject *dataObject = [[JHDataObject alloc] initWithOperation:operation error:error];
+        [delegate dataUtils:self didFinishWithDataObject:dataObject];
     }];
     
     [self.pendingOperations.downloadQueue addOperation:datasource_download_operation];
@@ -80,6 +80,21 @@
         _pendingOperations = [[PendingOperations alloc] init];
     }
     return _pendingOperations;
+}
+
+- (NSArray *)allPendingOperations
+{
+    return [self.pendingOperations.downloadsInProgress allKeys];
+}
+
+- (id)pendingOperationAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.pendingOperations.downloadsInProgress objectForKey:indexPath];
+}
+
+- (void)removePendingOperationAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.pendingOperations.downloadsInProgress removeObjectForKey:indexPath];
 }
 
 - (void)suspendAllOperations

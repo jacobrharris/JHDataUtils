@@ -12,19 +12,17 @@
 @implementation JHDataObject {
     NSURLRequest *_requestObject;
     NSHTTPURLResponse *_responseObject;
+    NSError *_errorObject;
     NSDictionary *_jsonDict;
 }
 
-- (id)initWithOperation:(AFHTTPRequestOperation *)operation
+- (id)initWithOperation:(AFHTTPRequestOperation *)operation error:(NSError *)error
 {
     if (self = [super init]) {
         _requestObject = [operation request];
         _responseObject = [operation response];
         _jsonDict = [self jsonifyData:[operation responseData]];
-        
-        if (!_jsonDict) {
-            return nil;
-        }
+        _errorObject = error;
     }
     
     return self;
@@ -35,6 +33,10 @@
     NSError *error;
     NSDictionary *jsonSerialized = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
 
+    if (error) {
+        _errorObject = error;
+    }
+    
     return jsonSerialized;
 }
 
@@ -57,6 +59,11 @@
 - (NSDictionary *)json
 {
     return _jsonDict;
+}
+
+- (NSError *)error
+{
+    return _errorObject;
 }
 
 @end
