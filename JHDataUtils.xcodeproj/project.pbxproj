@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		161952401A7EE84D00C7437F /* ImageDownloaderOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1619523E1A7EE84D00C7437F /* ImageDownloaderOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		161952411A7EE84D00C7437F /* ImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619523F1A7EE84D00C7437F /* ImageDownloaderOperation.m */; };
 		164099201A12DBBE00D7AD8F /* PendingOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 1640991E1A12DBBE00D7AD8F /* PendingOperations.h */; };
 		164099211A12DBBE00D7AD8F /* PendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640991F1A12DBBE00D7AD8F /* PendingOperations.m */; };
 		164099241A12DC7C00D7AD8F /* JHDataUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 164099221A12DC7C00D7AD8F /* JHDataUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,6 +75,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1619523E1A7EE84D00C7437F /* ImageDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloaderOperation.h; sourceTree = "<group>"; };
+		1619523F1A7EE84D00C7437F /* ImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloaderOperation.m; sourceTree = "<group>"; };
 		1640991E1A12DBBE00D7AD8F /* PendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PendingOperations.h; path = ../PendingOperations.h; sourceTree = "<group>"; };
 		1640991F1A12DBBE00D7AD8F /* PendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PendingOperations.m; path = ../PendingOperations.m; sourceTree = "<group>"; };
 		164099221A12DC7C00D7AD8F /* JHDataUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDataUtils.h; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 			children = (
 				1640991E1A12DBBE00D7AD8F /* PendingOperations.h */,
 				1640991F1A12DBBE00D7AD8F /* PendingOperations.m */,
+				1619523E1A7EE84D00C7437F /* ImageDownloaderOperation.h */,
+				1619523F1A7EE84D00C7437F /* ImageDownloaderOperation.m */,
 				164099221A12DC7C00D7AD8F /* JHDataUtils.h */,
 				164099231A12DC7C00D7AD8F /* JHDataUtils.m */,
 				1640994D1A12E70A00D7AD8F /* JHDataObject.h */,
@@ -193,6 +199,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161952401A7EE84D00C7437F /* ImageDownloaderOperation.h in Headers */,
 				164099241A12DC7C00D7AD8F /* JHDataUtils.h in Headers */,
 				1640994F1A12E70A00D7AD8F /* JHDataObject.h in Headers */,
 				164099471A12E44500D7AD8F /* AFURLRequestSerialization.h in Headers */,
@@ -304,6 +311,7 @@
 			files = (
 				1640993B1A12E44500D7AD8F /* AFHTTPRequestOperation.m in Sources */,
 				1640993D1A12E44500D7AD8F /* AFHTTPRequestOperationManager.m in Sources */,
+				161952411A7EE84D00C7437F /* ImageDownloaderOperation.m in Sources */,
 				164099421A12E44500D7AD8F /* AFNetworkReachabilityManager.m in Sources */,
 				164099501A12E70A00D7AD8F /* JHDataObject.m in Sources */,
 				1640994A1A12E44500D7AD8F /* AFURLResponseSerialization.m in Sources */,

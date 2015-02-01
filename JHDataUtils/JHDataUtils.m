@@ -18,61 +18,46 @@
 
 - (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate
 {
-     AFHTTPRequestOperation *datasource_download_operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    AFHTTPRequestOperation *datasource_download_operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    datasource_download_operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    datasource_download_operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"]; // NOT SURE IF THIS IS NEEDED
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     [datasource_download_operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
     {
-        id<JHDataUtilsDelegate> delegate = self.delegate;
-        JHDataObject *dataObject = [[JHDataObject alloc] initWithOperation:operation error:nil];
+        NSDictionary *json = (NSDictionary *)responseObject;
         
-        if (![dataObject json]) {
-            [delegate dataUtils:self didFinishWithDataObject:nil];
+        if (!json) {
+            [delegate dataUtils:self didFinishWithJSON:nil];
         } else {
-            [delegate dataUtils:self didFinishWithDataObject:dataObject];
+            [delegate dataUtils:self didFinishWithJSON:json];
         }
         
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
          
     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
     {
-        JHDataObject *dataObject = [[JHDataObject alloc] initWithOperation:operation error:error];
-        [delegate dataUtils:self didFinishWithDataObject:dataObject];
+        [delegate dataUtils:self didFailWithError:error];
     }];
     
     [self.pendingOperations.downloadQueue addOperation:datasource_download_operation];
 }
 
-- (NSMutableURLRequest *)newPOSTRequest:(NSString *)post url:(NSURL *)url
+- (void)startImageDownloadingForURL:(NSURL *)url atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate
 {
-    NSData *data = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[data length]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:url];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:data];
-    
-    return request;
+    ImageDownloaderOperation *imageDownloader = [[ImageDownloaderOperation alloc] initWithURL:url atIndexPath:indexPath delegate:self];
+    [self.pendingOperations.downloadsInProgress setObject:imageDownloader forKey:indexPath];
+    [self.pendingOperations.downloadQueue addOperation:imageDownloader];
 }
 
-//- (void)imageDownloaderDidFinish:(ImageDownloaderOperation *)downloader
-//{
-//    NSIndexPath *tvIndexPath = downloader.indexPathInTableView;
-//    NSIndexPath *cvIndexPath = downloader.indexPathInCollectionView;
-//
-//    id<AIDataUtilsDelegate> delegate = self.delegate;
-//    
-//    if (!cvIndexPath) {
-//        [delegate dataUtils:self didFinishWithIndexPath:tvIndexPath];
-//        [self.pendingOperations.downloadsInProgress removeObjectForKey:tvIndexPath];
-//    } else {
-//        [delegate dataUtils:self didFinishWithTableViewIndexPath:tvIndexPath collectionViewIndexPath:cvIndexPath];
-//        [self.pendingOperations.downloadsInProgress removeObjectForKey:cvIndexPath];
-//    }
-//}
+- (void)imageDownloaderDidFinish:(ImageDownloaderOperation *)downloader
+{
+    id <JHDataUtilsDelegate> delegate = self.delegate;
+    NSIndexPath *indexPath = downloader.indexPath;
+    [delegate dataUtils:self didFinishWithImage:downloader.image atIndexPath:downloader.indexPath];
+    [self.pendingOperations.downloadsInProgress removeObjectForKey:indexPath];
+}
 
 - (PendingOperations *)pendingOperations
 {

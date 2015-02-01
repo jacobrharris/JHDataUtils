@@ -7,15 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ImageDownloaderOperation.h"
 #import "JHDataObject.h"
 
 @protocol JHDataUtilsDelegate;
 
-@interface JHDataUtils : NSObject
+@interface JHDataUtils : NSObject <ImageDownloaderDelegate>
 
-@property (weak, nonatomic) id <JHDataUtilsDelegate> delegate;
+@property (assign) id <JHDataUtilsDelegate> delegate;
 
 - (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate;
+- (void)startImageDownloadingForURL:(NSURL *)url atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
 - (NSArray *)allPendingOperations;
 - (id)pendingOperationAtIndexPath:(NSIndexPath *)indexPath;
 - (void)removePendingOperationAtIndexPath:(NSIndexPath *)indexPath;
@@ -27,6 +29,10 @@
 
 
 @protocol JHDataUtilsDelegate <NSObject>
+
+- (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithImage:(UIImage *)image atIndexPath:(NSIndexPath *)indexPath;
+- (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithJSON:(NSDictionary *)json;
+- (void)dataUtils:(JHDataUtils *)dataUtils didFailWithError:(NSError *)error;
 
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithDataObject:(JHDataObject *)object;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithIndexPath:(NSIndexPath *)indexPath;
