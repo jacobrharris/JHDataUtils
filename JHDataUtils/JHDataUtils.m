@@ -20,6 +20,7 @@
 {
     AFHTTPRequestOperation *datasource_download_operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     datasource_download_operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    ((AFJSONResponseSerializer *)datasource_download_operation.responseSerializer).removesKeysWithNullValues = YES;
     datasource_download_operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"]; // NOT SURE IF THIS IS NEEDED
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
