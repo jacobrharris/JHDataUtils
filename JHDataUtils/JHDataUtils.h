@@ -18,6 +18,7 @@
 
 - (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate;
 - (void)startImageDownloadingForURL:(NSURL *)url atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
+- (void)startImageDownloadingForURLs:(NSDictionary *)urls atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
 - (NSArray *)allPendingOperations;
 - (id)pendingOperationAtIndexPath:(NSIndexPath *)indexPath;
 - (void)removePendingOperationAtIndexPath:(NSIndexPath *)indexPath;
@@ -31,6 +32,7 @@
 @protocol JHDataUtilsDelegate <NSObject>
 
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithImage:(UIImage *)image atIndexPath:(NSIndexPath *)indexPath;
+- (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithImage:(UIImage *)image withKey:(NSString *)key atIndexPath:(NSIndexPath *)indexPath;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithJSON:(NSDictionary *)json;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFailWithError:(NSError *)error;
 

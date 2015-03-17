@@ -21,6 +21,18 @@
     return self;
 }
 
+- (instancetype)initWithURL:(NSURL *)url withKey:(NSString *)key atIndexPath:(NSIndexPath *)indexPath delegate:(id<ImageDownloaderDelegate>)delegate
+{
+    if (self = [super init]) {
+        _delegate = delegate;
+        _indexPath = indexPath;
+        _imageURL = url;
+        _imageKey = key;
+    }
+
+    return self;
+}
+
 - (void)main
 {
     @autoreleasepool {

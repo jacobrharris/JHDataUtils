@@ -52,11 +52,20 @@
     [self.pendingOperations.downloadQueue addOperation:imageDownloader];
 }
 
+- (void)startImageDownloadingForURLs:(NSDictionary *)urls atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate
+{
+    for (NSString *key in urls) {
+        ImageDownloaderOperation *imageDownloader = [[ImageDownloaderOperation alloc] initWithURL:[urls valueForKey:key] withKey:key atIndexPath:indexPath delegate:delegate];
+        [self.pendingOperations.downloadsInProgress setObject:imageDownloader forKey:indexPath];
+        [self.pendingOperations.downloadQueue addOperation:imageDownloader];
+    }
+}
+
 - (void)imageDownloaderDidFinish:(ImageDownloaderOperation *)downloader
 {
     id <JHDataUtilsDelegate> delegate = self.delegate;
     NSIndexPath *indexPath = downloader.indexPath;
-    [delegate dataUtils:self didFinishWithImage:downloader.image atIndexPath:downloader.indexPath];
+    [delegate dataUtils:self didFinishWithImage:downloader.image withKey:downloader.imageKey atIndexPath:indexPath];
     [self.pendingOperations.downloadsInProgress removeObjectForKey:indexPath];
 }
 
