@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JHCache.h"
 #import "ImageDownloaderOperation.h"
-#import "JHDataObject.h"
 
 @protocol JHDataUtilsDelegate;
 
@@ -16,6 +16,7 @@
 
 @property (assign) id <JHDataUtilsDelegate> delegate;
 
+// Downloading
 - (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate;
 - (void)startImageDownloadingForURL:(NSURL *)url atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
 - (void)startImageDownloadingForURLs:(NSDictionary *)urls atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
@@ -26,17 +27,22 @@
 - (void)resumeAllOperations;
 - (void)cancelAllOperations;
 
+// Caching
+@property (strong, nonatomic, readonly) JHCache *caching;
+
 @end
 
 
 @protocol JHDataUtilsDelegate <NSObject>
 
+@required
+- (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithJSON:(NSDictionary *)json;
+
+@optional
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithImage:(UIImage *)image atIndexPath:(NSIndexPath *)indexPath;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithImage:(UIImage *)image withKey:(NSString *)key atIndexPath:(NSIndexPath *)indexPath;
-- (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithJSON:(NSDictionary *)json;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFailWithError:(NSError *)error;
 
-- (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithDataObject:(JHDataObject *)object;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithIndexPath:(NSIndexPath *)indexPath;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithTableViewIndexPath:(NSIndexPath *)tvIndexPath collectionViewIndexPath:(NSIndexPath *)cvIndexPath;
 
