@@ -16,7 +16,7 @@
 - (instancetype)initWithURL:(NSURL *)url atIndexPath:(NSIndexPath *)indexPath delegate:(id<ImageDownloaderDelegate>)delegate;
 - (instancetype)initWithURL:(NSURL *)url withKey:(NSString *)key atIndexPath:(NSIndexPath *)indexPath delegate:(id<ImageDownloaderDelegate>)delegate;
 
-@property (assign) id <ImageDownloaderDelegate> delegate;
+@property (weak, nonatomic) id <ImageDownloaderDelegate> delegate;
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) NSString *imageKey;
