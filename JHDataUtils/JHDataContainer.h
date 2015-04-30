@@ -11,8 +11,6 @@
 @interface JHDataContainer : NSObject <NSCoding>
 
 - (instancetype)initWithContainerName:(NSString *)containerName data:(NSData *)data;
-- (instancetype)initWithCoder:(NSCoder *)decoder;
-- (void)encodeWithCoder:(NSCoder *)coder;
 
 @property (strong, nonatomic, readonly) NSString *containerName;
 @property (strong, nonatomic, readonly) NSDate *timestamp;

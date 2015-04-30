@@ -14,8 +14,8 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dataContainer];
-
     NSString *containerKey = [JHCache dataContainerKeyForString:dataContainer.containerName];
+
     [defaults setObject:data forKey:containerKey];
     if ([defaults synchronize]) {
         NSLog(@"Saved %@ to disk.", dataContainer.containerName);
@@ -26,10 +26,12 @@
 
 + (JHDataContainer *)loadCachedDataContainerForKey:(NSString *)key
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *containerKey = [JHCache dataContainerKeyForString:key];
-    NSData *data = [userDefaults objectForKey:containerKey];
-    JHDataContainer *dataContainer = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSData *data = [defaults objectForKey:containerKey];
+    
+    [NSKeyedUnarchiver setClass:[JHDataContainer class] forClassName:@"JHDataContainer"];
+    JHDataContainer *dataContainer = (JHDataContainer *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     if (dataContainer) {
         NSLog(@"Loaded %@ from disk", dataContainer.containerName);
@@ -50,20 +52,24 @@
     }
 
     [defaults synchronize];
+    
+    NSLog(@"Reset all caches");
 }
 
 + (void)resetCacheForKey:(NSString *)key
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults removeObjectForKey:key];
+    NSString *containerKey = [JHCache dataContainerKeyForString:key];
+    [defaults removeObjectForKey:containerKey];
     [defaults synchronize];
+    
+    NSLog(@"Reset cache for key: %@", key);
 }
 
 + (DataStaleness)dataStalenessStatusForKey:(NSString *)key
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *container = [defaults objectForKey:key];
-    NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:[container valueForKey:@"lastUpdated"]]; // in seconds
+    JHDataContainer *dataContainer = [JHCache loadCachedDataContainerForKey:key];
+    NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:dataContainer.timestamp]; // in seconds
     NSInteger maxAllowedTime = 20; // in seconds
 
     if (elapsedTime > maxAllowedTime) { // data is stale
@@ -91,7 +97,7 @@
 
 + (NSString *)timestampName
 {
-    return @"last_updated";
+    return @"timestamp";
 }
 
 @end

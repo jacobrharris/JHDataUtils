@@ -14,7 +14,7 @@
 
 @interface JHDataUtils : NSObject <ImageDownloaderDelegate>
 
-@property (assign) id <JHDataUtilsDelegate> delegate;
+@property (weak, nonatomic) id <JHDataUtilsDelegate> delegate;
 
 // Downloading
 - (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate;
