@@ -79,8 +79,8 @@
 /* Begin PBXFileReference section */
 		1619523E1A7EE84D00C7437F /* ImageDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloaderOperation.h; sourceTree = "<group>"; };
 		1619523F1A7EE84D00C7437F /* ImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloaderOperation.m; sourceTree = "<group>"; };
-		1640991E1A12DBBE00D7AD8F /* PendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PendingOperations.h; path = ../PendingOperations.h; sourceTree = "<group>"; };
-		1640991F1A12DBBE00D7AD8F /* PendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PendingOperations.m; path = ../PendingOperations.m; sourceTree = "<group>"; };
+		1640991E1A12DBBE00D7AD8F /* PendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingOperations.h; sourceTree = "<group>"; };
+		1640991F1A12DBBE00D7AD8F /* PendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingOperations.m; sourceTree = "<group>"; };
 		164099221A12DC7C00D7AD8F /* JHDataUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDataUtils.h; sourceTree = "<group>"; };
 		164099231A12DC7C00D7AD8F /* JHDataUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHDataUtils.m; sourceTree = "<group>"; };
 		164099271A12E44500D7AD8F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -144,7 +144,8 @@
 				164099381A12E44500D7AD8F /* AFURLSessionManager.h */,
 				164099391A12E44500D7AD8F /* AFURLSessionManager.m */,
 			);
-			path = AFNetworking;
+			name = AFNetworking;
+			path = JHDataUtils/AFNetworking;
 			sourceTree = "<group>";
 		};
 		16E837DD1A0C4EE100D92218 = {

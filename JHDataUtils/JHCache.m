@@ -80,12 +80,12 @@
         NSLog(@"Data is fresh.");
         NSLog(@"%f", elapsedTime);
         return DataStalenessFresh;
-    } else if (isnan(elapsedTime)) { // first launch (consider data fresh)
+    } else if (isnan(elapsedTime)) { // first launch (consider data stale)
         NSLog(@"First launch. No stored data.");
         NSLog(@"%f", elapsedTime);
-        return DataStalenessFresh;
+        return DataStalenessStale;
     } else {
-        return 0;
+        return DataStalenessStale;
     }
 }
 
