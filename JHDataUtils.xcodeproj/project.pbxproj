@@ -47,6 +47,8 @@
 		1640994A1A12E44500D7AD8F /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 164099371A12E44500D7AD8F /* AFURLResponseSerialization.m */; };
 		1640994B1A12E44500D7AD8F /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 164099381A12E44500D7AD8F /* AFURLSessionManager.h */; };
 		1640994C1A12E44500D7AD8F /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 164099391A12E44500D7AD8F /* AFURLSessionManager.m */; };
+		1655FA991B3F4B6E0097D40C /* JHDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 1655FA971B3F4B6E0097D40C /* JHDataRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1655FA9A1B3F4B6E0097D40C /* JHDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1655FA981B3F4B6E0097D40C /* JHDataRequest.m */; };
 		16A1B3A21ADFED51001D832D /* JHCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A1B3A01ADFED51001D832D /* JHCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16A1B3A31ADFED51001D832D /* JHCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B3A11ADFED51001D832D /* JHCache.m */; };
 		16A1B3A61ADFFFA1001D832D /* JHDataContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A1B3A41ADFFFA1001D832D /* JHDataContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -102,6 +104,8 @@
 		164099371A12E44500D7AD8F /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		164099381A12E44500D7AD8F /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		164099391A12E44500D7AD8F /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		1655FA971B3F4B6E0097D40C /* JHDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDataRequest.h; sourceTree = "<group>"; };
+		1655FA981B3F4B6E0097D40C /* JHDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHDataRequest.m; sourceTree = "<group>"; };
 		16A1B3A01ADFED51001D832D /* JHCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCache.h; sourceTree = "<group>"; };
 		16A1B3A11ADFED51001D832D /* JHCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCache.m; sourceTree = "<group>"; };
 		16A1B3A41ADFFFA1001D832D /* JHDataContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDataContainer.h; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 			children = (
 				164099221A12DC7C00D7AD8F /* JHDataUtils.h */,
 				164099231A12DC7C00D7AD8F /* JHDataUtils.m */,
+				1655FA971B3F4B6E0097D40C /* JHDataRequest.h */,
+				1655FA981B3F4B6E0097D40C /* JHDataRequest.m */,
 				16A1B3A41ADFFFA1001D832D /* JHDataContainer.h */,
 				16A1B3A51ADFFFA1001D832D /* JHDataContainer.m */,
 				16A1B3A01ADFED51001D832D /* JHCache.h */,
@@ -207,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				164099241A12DC7C00D7AD8F /* JHDataUtils.h in Headers */,
+				1655FA991B3F4B6E0097D40C /* JHDataRequest.h in Headers */,
 				16A1B3A61ADFFFA1001D832D /* JHDataContainer.h in Headers */,
 				16A1B3A21ADFED51001D832D /* JHCache.h in Headers */,
 				161952401A7EE84D00C7437F /* ImageDownloaderOperation.h in Headers */,
@@ -323,6 +330,7 @@
 				164099421A12E44500D7AD8F /* AFNetworkReachabilityManager.m in Sources */,
 				1640994A1A12E44500D7AD8F /* AFURLResponseSerialization.m in Sources */,
 				164099461A12E44500D7AD8F /* AFURLConnectionOperation.m in Sources */,
+				1655FA9A1B3F4B6E0097D40C /* JHDataRequest.m in Sources */,
 				164099441A12E44500D7AD8F /* AFSecurityPolicy.m in Sources */,
 				1640993F1A12E44500D7AD8F /* AFHTTPSessionManager.m in Sources */,
 				164099481A12E44500D7AD8F /* AFURLRequestSerialization.m in Sources */,

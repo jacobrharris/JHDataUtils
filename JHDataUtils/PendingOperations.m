@@ -23,8 +23,9 @@
     if (!_downloadQueue) {
         _downloadQueue = [[NSOperationQueue alloc] init];
         _downloadQueue.name = @"Download Queue";
-        _downloadQueue.maxConcurrentOperationCount = 1;
+        _downloadQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
     }
+    
     return _downloadQueue;
 }
 

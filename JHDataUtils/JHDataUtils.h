@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JHDataRequest.h"
 #import "JHCache.h"
 #import "ImageDownloaderOperation.h"
 
@@ -17,15 +18,16 @@
 @property (weak, nonatomic) id <JHDataUtilsDelegate> delegate;
 
 // Downloading
-- (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate;
-- (void)startImageDownloadingForURL:(NSURL *)url atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
-- (void)startImageDownloadingForURLs:(NSDictionary *)urls atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
+- (void)queueDownloadRequest:(JHDataRequest *)request delegate:(id<JHDataUtilsDelegate>)delegate;
+- (void)startImageDownloadingForURL:(NSURL *)url atIndexPath:(NSIndexPath *)indexPath delegate:(id<JHDataUtilsDelegate>)delegate;
+- (void)startImageDownloadingForURLs:(NSDictionary *)urls atIndexPath:(NSIndexPath *)indexPath delegate:(id<JHDataUtilsDelegate>)delegate;
 - (NSArray *)allPendingOperations;
 - (id)pendingOperationAtIndexPath:(NSIndexPath *)indexPath;
 - (void)removePendingOperationAtIndexPath:(NSIndexPath *)indexPath;
 - (void)suspendAllOperations;
 - (void)resumeAllOperations;
 - (void)cancelAllOperations;
+@property (nonatomic, readonly, getter=isSuspended) BOOL suspended;
 
 // Caching
 @property (strong, nonatomic, readonly) JHCache *caching;
@@ -41,8 +43,6 @@
 @optional
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithImage:(UIImage *)image atIndexPath:(NSIndexPath *)indexPath;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithImage:(UIImage *)image withKey:(NSString *)key atIndexPath:(NSIndexPath *)indexPath;
-- (void)dataUtils:(JHDataUtils *)dataUtils didFailWithError:(NSError *)error;
-
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithIndexPath:(NSIndexPath *)indexPath;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithTableViewIndexPath:(NSIndexPath *)tvIndexPath collectionViewIndexPath:(NSIndexPath *)cvIndexPath;
 
