@@ -10,18 +10,79 @@
 #import "PendingOperations.h"
 #import "AFNetworking.h"
 
+NSString *const JHDataUtilsNetworkStatusDidChangeNotification = @"com.jhdatautils.network-status.change";
+NSString *const JHDataUtilsNetworkStatusNotificationItem = @"JHDataUtilsNetworkStatusNotificationItem";
+NSString *const JHDataUtilsNetworkRequestDidFailNotification = @"com.jhdatautils.network-request.fail";
+NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetworkRequestNotificationItem";
+
 @implementation JHDataUtils {
     PendingOperations *_pendingOperations;
+    AFNetworkReachabilityManager *_reachabilityManager;
 }
 
 #define apiKey @"abcd1234"
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityDidChange:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+        _reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+        [_reachabilityManager startMonitoring];
+    }
+
+    return self;
+}
+
+//+ (instancetype)sharedDataUtils
+//{
+//    static JHDataUtils *utils = nil;
+//    if (utils == nil) {
+//        static dispatch_once_t onceToken;
+//        dispatch_once(&onceToken, ^{
+//            utils = [[self alloc] init];
+//            [[NSNotificationCenter defaultCenter] addObserver:utils selector:@selector(reachabilityDidChange:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+//            AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+//            [reachabilityManager startMonitoring];
+//            NSLog(@"reachabilityManager: %@", reachabilityManager);
+//        });
+//    }
+//    
+//    return utils;
+//}
+
+- (JHDataUtilsNetworkStatus)currentNetworkStatus
+{
+    switch (_reachabilityManager.networkReachabilityStatus) {
+        case AFNetworkReachabilityStatusUnknown:
+            return JHDataUtilsNetworkStatusDown;
+            
+        case AFNetworkReachabilityStatusNotReachable:
+            return JHDataUtilsNetworkStatusDown;
+            
+        case AFNetworkReachabilityStatusReachableViaWWAN:
+            return JHDataUtilsNetworkStatusUp;
+            
+        case AFNetworkReachabilityStatusReachableViaWiFi:
+            return JHDataUtilsNetworkStatusUp;
+            
+        // ?
+        default:
+            return JHDataUtilsNetworkStatusDown;
+    }
+}
+ 
+- (void)reachabilityDidChange:(id)sender
+{
+    JHDataUtilsNetworkStatus networkStatus = [self currentNetworkStatus];
+    [[NSNotificationCenter defaultCenter] postNotificationName:JHDataUtilsNetworkStatusDidChangeNotification object:nil userInfo:@{JHDataUtilsNetworkStatusNotificationItem:@(networkStatus)}];
+}
 
 - (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate
 {
     AFHTTPRequestOperation *datasource_download_operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     datasource_download_operation.responseSerializer = [AFJSONResponseSerializer serializer];
     ((AFJSONResponseSerializer *)datasource_download_operation.responseSerializer).removesKeysWithNullValues = YES;
-    datasource_download_operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"]; // NOT SURE IF THIS IS NEEDED
+    datasource_download_operation.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"text/html", nil];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
@@ -105,6 +166,11 @@
 - (void)cancelAllOperations
 {
     [self.pendingOperations.downloadQueue cancelAllOperations];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -22,6 +22,6 @@ typedef NS_ENUM(NSInteger, DataStaleness) {
 + (void)resetAllCaches;
 + (void)resetCacheForKey:(NSString *)key;
 
-+ (DataStaleness)dataStalenessStatusForKey:(NSString *)key;
++ (DataStaleness)dataStalenessStatusForKey:(NSString *)key maxAllowedTime:(NSTimeInterval)allowedTime;
 
 @end

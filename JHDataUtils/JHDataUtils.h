@@ -10,11 +10,22 @@
 #import "JHCache.h"
 #import "ImageDownloaderOperation.h"
 
+typedef NS_ENUM(NSInteger, JHDataUtilsNetworkStatus) {
+    JHDataUtilsNetworkStatusDown = 0,
+    JHDataUtilsNetworkStatusUp = 1
+};
+
 @protocol JHDataUtilsDelegate;
 
 @interface JHDataUtils : NSObject <ImageDownloaderDelegate>
 
+extern NSString *const JHDataUtilsNetworkStatusDidChangeNotification;
+extern NSString *const JHDataUtilsNetworkStatusNotificationItem;
+extern NSString *const JHDataUtilsNetworkRequestDidFailNotification;
+extern NSString *const JHDataUtilsNetworkRequestNotificationItem;
+
 @property (weak, nonatomic) id <JHDataUtilsDelegate> delegate;
+@property (nonatomic, readonly) JHDataUtilsNetworkStatus currentNetworkStatus;
 
 // Downloading
 - (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate;

@@ -66,17 +66,16 @@
     NSLog(@"Reset cache for key: %@", key);
 }
 
-+ (DataStaleness)dataStalenessStatusForKey:(NSString *)key
++ (DataStaleness)dataStalenessStatusForKey:(NSString *)key maxAllowedTime:(NSTimeInterval)allowedTime
 {
     JHDataContainer *dataContainer = [JHCache loadCachedDataContainerForKey:key];
     NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:dataContainer.timestamp]; // in seconds
-    NSInteger maxAllowedTime = 20; // in seconds
 
-    if (elapsedTime > maxAllowedTime) { // data is stale
+    if (elapsedTime > allowedTime) { // data is stale
         NSLog(@"Data is stale. Time to refresh.");
         NSLog(@"%f", elapsedTime);
         return DataStalenessStale;
-    } else if (elapsedTime <= maxAllowedTime) { // data is fresh
+    } else if (elapsedTime <= allowedTime) { // data is fresh
         NSLog(@"Data is fresh.");
         NSLog(@"%f", elapsedTime);
         return DataStalenessFresh;
