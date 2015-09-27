@@ -54,7 +54,7 @@ NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetwork
 {
     switch (_reachabilityManager.networkReachabilityStatus) {
         case AFNetworkReachabilityStatusUnknown:
-            return JHDataUtilsNetworkStatusDown;
+            return JHDataUtilsNetworkStatusUp;
             
         case AFNetworkReachabilityStatusNotReachable:
             return JHDataUtilsNetworkStatusDown;
@@ -82,7 +82,7 @@ NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetwork
     AFHTTPRequestOperation *datasource_download_operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     datasource_download_operation.responseSerializer = [AFJSONResponseSerializer serializer];
     ((AFJSONResponseSerializer *)datasource_download_operation.responseSerializer).removesKeysWithNullValues = YES;
-    datasource_download_operation.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"text/html", nil];
+    datasource_download_operation.responseSerializer.acceptableContentTypes = [datasource_download_operation.responseSerializer.acceptableContentTypes setByAddingObjectsFromArray:@[@"text/plain", @"text/html"]];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
@@ -166,6 +166,7 @@ NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetwork
 - (void)cancelAllOperations
 {
     [self.pendingOperations.downloadQueue cancelAllOperations];
+    
 }
 
 - (void)dealloc

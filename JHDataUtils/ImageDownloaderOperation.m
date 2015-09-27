@@ -51,6 +51,8 @@
             if (downloadedImage) {
                 _image = downloadedImage;
             }
+        } else {
+            _image = [UIImage new];
         }
         
         imageData = nil;
