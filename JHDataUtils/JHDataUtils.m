@@ -32,7 +32,7 @@ NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetwork
 
     return self;
 }
- 
+
 // TODO: Make a singleton
 //+ (instancetype)sharedDataUtils
 //{
