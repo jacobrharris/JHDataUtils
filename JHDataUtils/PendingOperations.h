@@ -13,4 +13,6 @@
 @property (nonatomic, strong) NSMutableDictionary *downloadsInProgress;
 @property (nonatomic, strong) NSOperationQueue *downloadQueue;
 
+- (void)cancelAllOperations;
+
 @end

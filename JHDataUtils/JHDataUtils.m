@@ -7,13 +7,16 @@
 //
 
 #import "JHDataUtils.h"
-#import "PendingOperations.h"
+#import "JHDownloadOperation.h"
 #import "AFNetworking.h"
 
 NSString *const JHDataUtilsNetworkStatusDidChangeNotification = @"com.jhdatautils.network-status.change";
 NSString *const JHDataUtilsNetworkStatusNotificationItem = @"JHDataUtilsNetworkStatusNotificationItem";
 NSString *const JHDataUtilsNetworkRequestDidFailNotification = @"com.jhdatautils.network-request.fail";
 NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetworkRequestNotificationItem";
+
+@interface JHDataUtils () <JHDownloadOperationDelegate>
+@end
 
 @implementation JHDataUtils {
     PendingOperations *_pendingOperations;
@@ -78,39 +81,34 @@ NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetwork
     [[NSNotificationCenter defaultCenter] postNotificationName:JHDataUtilsNetworkStatusDidChangeNotification object:nil userInfo:@{JHDataUtilsNetworkStatusNotificationItem:@(networkStatus)}];
 }
 
-- (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate
-{
-    AFHTTPRequestOperation *datasource_download_operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    datasource_download_operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    ((AFJSONResponseSerializer *)datasource_download_operation.responseSerializer).removesKeysWithNullValues = YES;
-    datasource_download_operation.responseSerializer.acceptableContentTypes = [datasource_download_operation.responseSerializer.acceptableContentTypes setByAddingObjectsFromArray:@[@"text/plain", @"text/html"]];
-    
+- (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate {
+    JHDownloadOperation *downloadOperation = [[JHDownloadOperation alloc] initWithRequest:request];
+    downloadOperation.delegate = self;
+
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [self.pendingOperations.downloadQueue addOperation:downloadOperation];
+}
+
+- (void)downloadOperationDidFinish:(JHDownloadOperation *)downloadOperation {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
+    id <JHDataUtilsDelegate> delegate = self.delegate;
+    [delegate dataUtils:self didFinishWithJSON:downloadOperation.json];
+}
+
+- (void)downloadOperationDidFail:(JHDownloadOperation *)downloadOperation {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
-    [datasource_download_operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        NSDictionary *json = (NSDictionary *)responseObject;
-        
-        if (!json) {
-            [delegate dataUtils:self didFinishWithJSON:nil];
-        } else {
-            [delegate dataUtils:self didFinishWithJSON:json];
-        }
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-    {
-        [delegate dataUtils:self didFailWithError:error];
-    }];
-    
-    [self.pendingOperations.downloadQueue addOperation:datasource_download_operation];
+    // Just die silently if the error is due to the operation being cancelled.
+    if (!downloadOperation.isCancelled) {
+        id <JHDataUtilsDelegate> delegate = self.delegate;
+        [delegate dataUtils:self didFailWithError:downloadOperation.error];
+    }
 }
 
 - (void)startImageDownloadingForURL:(NSURL *)url atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate
 {
     ImageDownloaderOperation *imageDownloader = [[ImageDownloaderOperation alloc] initWithURL:url atIndexPath:indexPath delegate:self];
-    [self.pendingOperations.downloadsInProgress setObject:imageDownloader forKey:indexPath];
     [self.pendingOperations.downloadQueue addOperation:imageDownloader];
 }
 
@@ -118,7 +116,6 @@ NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetwork
 {
     for (NSString *key in urls) {
         ImageDownloaderOperation *imageDownloader = [[ImageDownloaderOperation alloc] initWithURL:[urls valueForKey:key] withKey:key atIndexPath:indexPath delegate:delegate];
-        [self.pendingOperations.downloadsInProgress setObject:imageDownloader forKey:indexPath];
         [self.pendingOperations.downloadQueue addOperation:imageDownloader];
     }
 }
@@ -128,7 +125,6 @@ NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetwork
     id <JHDataUtilsDelegate> delegate = self.delegate;
     NSIndexPath *indexPath = downloader.indexPath;
     [delegate dataUtils:self didFinishWithImage:downloader.image withKey:downloader.imageKey atIndexPath:indexPath];
-    [self.pendingOperations.downloadsInProgress removeObjectForKey:indexPath];
 }
 
 - (PendingOperations *)pendingOperations
@@ -166,8 +162,7 @@ NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetwork
 
 - (void)cancelAllOperations
 {
-    [self.pendingOperations.downloadQueue cancelAllOperations];
-    
+    [self.pendingOperations cancelAllOperations];
 }
 
 - (void)dealloc

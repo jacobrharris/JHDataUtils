@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JHCache.h"
 #import "ImageDownloaderOperation.h"
+#import "PendingOperations.h"
 
 typedef NS_ENUM(NSInteger, JHDataUtilsNetworkStatus) {
     JHDataUtilsNetworkStatusDown = 0,
@@ -32,6 +33,7 @@ extern NSString *const JHDataUtilsNetworkRequestNotificationItem;
 - (void)startImageDownloadingForURL:(NSURL *)url atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
 - (void)startImageDownloadingForURLs:(NSDictionary *)urls atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
 - (NSArray *)allPendingOperations;
+- (PendingOperations *)pendingOperations;
 - (id)pendingOperationAtIndexPath:(NSIndexPath *)indexPath;
 - (void)removePendingOperationAtIndexPath:(NSIndexPath *)indexPath;
 - (void)suspendAllOperations;

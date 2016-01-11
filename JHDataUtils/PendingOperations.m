@@ -10,6 +10,11 @@
 
 @implementation PendingOperations
 
+- (NSString *)description {
+    NSString *description = [NSString stringWithFormat:@"downloadsInProgress: %@\ndownloadQueue: %@", [self downloadsInProgress], [self downloadQueue].operations];
+    return description;
+}
+
 - (NSMutableDictionary *)downloadsInProgress
 {
     if (!_downloadsInProgress) {
@@ -26,6 +31,10 @@
         _downloadQueue.maxConcurrentOperationCount = 1;
     }
     return _downloadQueue;
+}
+
+- (void)cancelAllOperations {
+    [_downloadQueue cancelAllOperations];
 }
 
 @end
