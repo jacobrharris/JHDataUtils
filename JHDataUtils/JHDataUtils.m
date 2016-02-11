@@ -7,23 +7,36 @@
 //
 
 #import "JHDataUtils.h"
+#import "JHBackgroundSessionManager.h"
 #import "JHDownloadOperation.h"
 #import "AFNetworking.h"
 
-NSString *const JHDataUtilsNetworkStatusDidChangeNotification = @"com.jhdatautils.network-status.change";
-NSString *const JHDataUtilsNetworkStatusNotificationItem = @"JHDataUtilsNetworkStatusNotificationItem";
-NSString *const JHDataUtilsNetworkRequestDidFailNotification = @"com.jhdatautils.network-request.fail";
-NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetworkRequestNotificationItem";
+NSString * const JHDataUtilsNetworkStatusDidChangeNotification = @"com.jhdatautils.network-status.change";
+NSString * const JHDataUtilsNetworkStatusNotificationItem = @"JHDataUtilsNetworkStatusNotificationItem";
+NSString * const JHDataUtilsNetworkRequestDidFailNotification = @"com.jhdatautils.network-request.fail";
+NSString * const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetworkRequestNotificationItem";
+NSString * const JHBackgroundSessionDownloadDidFinishNotification = @"JHBackgroundSessionDownloadDidFinishNotificationItem";
 
-@interface JHDataUtils () <JHDownloadOperationDelegate>
+@interface JHDataUtils () <JHDownloadOperationDelegate, JHBackgroundSessionDelegate>
 @end
 
 @implementation JHDataUtils {
+    JHBackgroundSessionManager *_backgroundSessionManager;
     PendingOperations *_pendingOperations;
     AFNetworkReachabilityManager *_reachabilityManager;
 }
 
-#define apiKey @"abcd1234"
++ (JHDataUtils *)sharedDataUtils {
+    static JHDataUtils *dataUtils = nil;
+    if (!dataUtils) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            dataUtils = [[JHDataUtils alloc] init];
+        });
+    }
+    
+    return dataUtils;
+}
 
 - (instancetype)init
 {
@@ -31,28 +44,13 @@ NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetwork
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityDidChange:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
         _reachabilityManager = [AFNetworkReachabilityManager sharedManager];
         [_reachabilityManager startMonitoring];
+        
+        _backgroundSessionManager = [JHBackgroundSessionManager sharedManager];
+        _backgroundSessionManager.delegate = self;
     }
-
+    
     return self;
 }
-
-// TODO: Make a singleton
-//+ (instancetype)sharedDataUtils
-//{
-//    static JHDataUtils *utils = nil;
-//    if (utils == nil) {
-//        static dispatch_once_t onceToken;
-//        dispatch_once(&onceToken, ^{
-//            utils = [[self alloc] init];
-//            [[NSNotificationCenter defaultCenter] addObserver:utils selector:@selector(reachabilityDidChange:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
-//            AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
-//            [reachabilityManager startMonitoring];
-//            NSLog(@"reachabilityManager: %@", reachabilityManager);
-//        });
-//    }
-//    
-//    return utils;
-//}
 
 - (JHDataUtilsNetworkStatus)currentNetworkStatus
 {
@@ -87,6 +85,18 @@ NSString *const JHDataUtilsNetworkRequestNotificationItem = @"JHDataUtilsNetwork
 
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [self.pendingOperations.downloadQueue addOperation:downloadOperation];
+}
+
+- (void)queueBackgroundDownloadRequest:(NSURLRequest *)request {
+    [[[JHBackgroundSessionManager sharedManager] downloadTaskWithRequest:request progress:nil destination:nil completionHandler:nil] resume];
+}
+
+- (void)setSavedCompletionHandler:(void (^)(void))savedCompletionHandler {
+    [JHBackgroundSessionManager sharedManager].savedCompletionHandler = savedCompletionHandler;
+}
+
+- (void)backgroundDownloadTaskDidFinishWithJSON:(id)json {
+    [[NSNotificationCenter defaultCenter] postNotificationName:JHBackgroundSessionDownloadDidFinishNotification object:nil userInfo:json];
 }
 
 - (void)downloadOperationDidFinish:(JHDownloadOperation *)downloadOperation {

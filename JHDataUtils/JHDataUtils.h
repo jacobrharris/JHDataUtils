@@ -20,18 +20,25 @@ typedef NS_ENUM(NSInteger, JHDataUtilsNetworkStatus) {
 
 @interface JHDataUtils : NSObject <ImageDownloaderDelegate>
 
-extern NSString *const JHDataUtilsNetworkStatusDidChangeNotification;
-extern NSString *const JHDataUtilsNetworkStatusNotificationItem;
-extern NSString *const JHDataUtilsNetworkRequestDidFailNotification;
-extern NSString *const JHDataUtilsNetworkRequestNotificationItem;
+extern NSString * const JHDataUtilsNetworkStatusDidChangeNotification;
+extern NSString * const JHDataUtilsNetworkStatusNotificationItem;
+extern NSString * const JHDataUtilsNetworkRequestDidFailNotification;
+extern NSString * const JHDataUtilsNetworkRequestNotificationItem;
+extern NSString * const JHBackgroundSessionDownloadDidFinishNotification;
 
+@property (nonatomic, copy) void (^savedCompletionHandler)(void);
 @property (weak, nonatomic) id <JHDataUtilsDelegate> delegate;
 @property (nonatomic, readonly) JHDataUtilsNetworkStatus currentNetworkStatus;
 
++ (JHDataUtils *)sharedDataUtils;
+
 // Downloading
 - (void)queueDownloadRequest:(NSURLRequest *)request delegate:(id)delegate;
+- (void)queueBackgroundDownloadRequest:(NSURLRequest *)request;
 - (void)startImageDownloadingForURL:(NSURL *)url atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
 - (void)startImageDownloadingForURLs:(NSDictionary *)urls atIndexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
+
+// Pending operations
 - (NSArray *)allPendingOperations;
 - (PendingOperations *)pendingOperations;
 - (id)pendingOperationAtIndexPath:(NSIndexPath *)indexPath;
@@ -49,6 +56,7 @@ extern NSString *const JHDataUtilsNetworkRequestNotificationItem;
 @protocol JHDataUtilsDelegate <NSObject>
 
 @optional
+- (void)dataUtils:(JHDataUtils *)dataUtils didFinishBackgroundDownloadWithJSON:(NSDictionary *)json;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithJSON:(NSDictionary *)json;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithImage:(UIImage *)image atIndexPath:(NSIndexPath *)indexPath;
 - (void)dataUtils:(JHDataUtils *)dataUtils didFinishWithImage:(UIImage *)image withKey:(NSString *)key atIndexPath:(NSIndexPath *)indexPath;
