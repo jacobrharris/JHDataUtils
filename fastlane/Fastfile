@@ -9,11 +9,13 @@ lane :build do |options|
 	)
 
 	prepare_framework_release(
+		version: 1.0,
 		skip_changelog:true
 	)
-	
-	complete_framework_release(
-		skip_ci_check:true
-	)
+
+# 	complete_framework_release(
+# 		skip_ci_check:true
+# 	)
+
 end
 
