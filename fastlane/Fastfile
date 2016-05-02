@@ -1,0 +1,8 @@
+import_from_git(
+  url: 'https://github.com/AFNetworking/fastlane.git', 
+  branch: '0.0.2'
+)
+
+complete_framework_release(
+	skip_ci_check:true
+)
