@@ -1,4 +1,8 @@
-lane :build do
+lane :build do |options|
+	puts options
+	
+	ENV['GITHUB_API_TOKEN'] = options[:API_TOKEN]
+
 	import_from_git(
 	  url: 'https://github.com/AFNetworking/fastlane.git', 
 	  branch: '0.0.2'
