@@ -1,8 +1,8 @@
 before_all do
-	ENV['owner'] = "jacobrharris"
-	ENV['github_owner'] = "jacobrharris"
-	ENV['github_repository'] = "JHDataUtils"
-	ENV['api_token'] = "c30d1acc09b6608c51d4468d132185dc34bfabbf"
+	puts ENV['owner'] = "jacobrharris"
+	puts ENV['github_owner'] = "jacobrharris"
+	puts ENV['github_repository'] = "JHDataUtils"
+	puts ENV['api_token'] = "c30d1acc09b6608c51d4468d132185dc34bfabbf"
 end
 
 lane :build do
