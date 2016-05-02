@@ -9,7 +9,7 @@ lane :build do |options|
 	)
 
 	prepare_framework_release(
-		version: 1.0,
+		version:"1.0",
 		skip_changelog:true
 	)
 
