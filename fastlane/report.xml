@@ -3,49 +3,49 @@
   <testsuite name="fastlane.lanes">
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.000974">
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.001226">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: import_from_git" time="0.742477">
+      <testcase classname="fastlane.lanes" name="1: import_from_git" time="0.843316">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: Switch to complete_framework_release lane" time="0.000576">
+      <testcase classname="fastlane.lanes" name="2: Switch to complete_framework_release lane" time="0.000569">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: last_git_tag" time="0.019921">
+      <testcase classname="fastlane.lanes" name="3: last_git_tag" time="0.020173">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: ensure_git_status_clean" time="0.011573">
+      <testcase classname="fastlane.lanes" name="4: ensure_git_status_clean" time="0.011172">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: ensure_git_branch" time="0.00967">
+      <testcase classname="fastlane.lanes" name="5: ensure_git_branch" time="0.009194">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: git pull origin master" time="0.383988">
+      <testcase classname="fastlane.lanes" name="6: git pull origin master" time="0.414171">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="7: af_generate_github_milestone_changelog" time="0.423231">
+      <testcase classname="fastlane.lanes" name="7: af_generate_github_milestone_changelog" time="0.418451">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="8: af_create_github_release" time="0.309491">
+      <testcase classname="fastlane.lanes" name="8: af_create_github_release" time="0.287498">
         
-          <failure message="/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/actions/actions_helper.rb:33:in `execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:129:in `block in execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:128:in `chdir'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:128:in `execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/fast_file.rb:149:in `method_missing'&#10;../../../../var/folders/3l/8_q_611x0ms5z5pk1n_79g_40000gn/T/fl_clone20160502-21919-1sok0fh/fastlane.git/fastlane/Fastfile:287:in `block in parsing_binding'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/lane.rb:36:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/lane.rb:36:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:110:in `try_switch_to_lane'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/fast_file.rb:141:in `rescue in method_missing'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/fast_file.rb:136:in `method_missing'&#10;Fastfile:11:in `block in parsing_binding'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/lane.rb:36:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/lane.rb:36:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:52:in `block in execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:46:in `chdir'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:46:in `execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/lane_manager.rb:46:in `cruise_lane'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/command_line_handler.rb:30:in `handle'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/bin/fastlane:38:in `block (2 levels) in run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:153:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/runner.rb:428:in `run_active_command'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane_core-0.43.0/lib/fastlane_core/ui/fastlane_runner.rb:23:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/delegates.rb:15:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/bin/fastlane:168:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/bin/fastlane:174:in `&lt;top (required)&gt;'&#10;/usr/local/bin/fastlane:23:in `load'&#10;/usr/local/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;[31mError Creating Github Release (404): {&quot;message&quot;=&gt;&quot;Not Found&quot;, &quot;documentation_url&quot;=&gt;&quot;https://developer.github.com/v3&quot;}[0m" />
+          <failure message="/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/actions/actions_helper.rb:33:in `execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:129:in `block in execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:128:in `chdir'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:128:in `execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/fast_file.rb:149:in `method_missing'&#10;../../../../var/folders/3l/8_q_611x0ms5z5pk1n_79g_40000gn/T/fl_clone20160502-21966-12unnrl/fastlane.git/fastlane/Fastfile:287:in `block in parsing_binding'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/lane.rb:36:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/lane.rb:36:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:110:in `try_switch_to_lane'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/fast_file.rb:141:in `rescue in method_missing'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/fast_file.rb:136:in `method_missing'&#10;Fastfile:11:in `block in parsing_binding'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/lane.rb:36:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/lane.rb:36:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:52:in `block in execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:46:in `chdir'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/runner.rb:46:in `execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/lane_manager.rb:46:in `cruise_lane'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/lib/fastlane/command_line_handler.rb:30:in `handle'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/bin/fastlane:38:in `block (2 levels) in run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:153:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/runner.rb:428:in `run_active_command'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane_core-0.43.0/lib/fastlane_core/ui/fastlane_runner.rb:23:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/delegates.rb:15:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/bin/fastlane:168:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.83.0/bin/fastlane:174:in `&lt;top (required)&gt;'&#10;/usr/local/bin/fastlane:23:in `load'&#10;/usr/local/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;[31mError Creating Github Release (404): {&quot;message&quot;=&gt;&quot;Not Found&quot;, &quot;documentation_url&quot;=&gt;&quot;https://developer.github.com/v3&quot;}[0m" />
         
       </testcase>
     
