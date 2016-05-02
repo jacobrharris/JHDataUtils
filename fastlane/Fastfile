@@ -9,7 +9,8 @@ lane :build do |options|
 	)
 
 	complete_framework_release(
-		skip_ci_check:true
+		skip_ci_check:true,
+		skip_changelog:true
 	)
 end
 
