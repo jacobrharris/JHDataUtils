@@ -1,8 +1,16 @@
-import_from_git(
-  url: 'https://github.com/AFNetworking/fastlane.git', 
-  branch: '0.0.2'
-)
+lane :build do
+	ENV['owner'] = "jacobrharris"
+	ENV['github_owner'] = "jacobrharris"
+	ENV['github_repository'] = "JHDataUtils"
+	ENV['api_token'] = "c30d1acc09b6608c51d4468d132185dc34bfabbf"
+	
+	import_from_git(
+	  url: 'https://github.com/AFNetworking/fastlane.git', 
+	  branch: '0.0.2'
+	)
 
-complete_framework_release(
-	skip_ci_check:true
-)
+	complete_framework_release(
+		skip_ci_check:true
+	)
+end
+
