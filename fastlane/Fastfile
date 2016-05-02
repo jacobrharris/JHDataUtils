@@ -1,8 +1,7 @@
 lane :build do |options|
 	puts options
-	puts ENV
 	
-	ENV['github_owner'] = options[:github_owner]
+	ENV['GITHUB_OWNER'] = options[:github_owner]
 
 	import_from_git(
 	  url: 'https://github.com/AFNetworking/fastlane.git', 
